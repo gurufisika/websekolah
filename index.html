@@ -1,0 +1,1097 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SMA Negeri 1 Halmahera Timur | Sekolah Unggul & Berkarakter</title>
+  <link rel="icon" type="image/png" href="logo.png">
+  
+  <!-- Tailwind CSS via CDN with Solidroad Theme Configuration -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: {
+              DEFAULT: '#dbf400',
+              hover: '#f4ff95',
+              inactive: '#f8fdcc',
+            },
+            dark: {
+              DEFAULT: '#2d2c29',
+              deep: '#1b2838',
+              muted: '#4b4a47',
+            },
+            'warm-gray': {
+              5: '#fbf7eb',
+              15: '#ebe5d5',
+              25: '#dad5c6',
+              200: '#544e3f',
+              600: '#322f25',
+            },
+            neutral: {
+              50: '#e1e0dd',
+              100: '#c3c2bf',
+              200: '#878683',
+              300: '#4b4a47',
+              400: '#3f3f3c',
+              600: '#2d2c29',
+            },
+            pastel: {
+              purple: '#f2eefd',
+              'purple-ink': '#8b5cf6',
+              blue: '#e4efff',
+              'blue-ink': '#3b82f6',
+              green: '#f1f8ec',
+              'green-ink': '#0e7017',
+              orange: '#fff5ee',
+              'orange-ink': '#ea580c',
+              yellow: '#fdffea',
+              'yellow-ink': '#b8cd00',
+            }
+          },
+          fontFamily: {
+            serif: ['"Instrument Serif"', 'Georgia', 'serif'],
+            sans: ['"Inter"', 'system-ui', '-apple-system', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts: Instrument Serif, Inter, JetBrains Mono & Lucide Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Solidroad Theme Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-white text-dark font-sans antialiased selection:bg-primary selection:text-neutral-600">
+
+  <!-- ================= TOP ANNOUNCEMENT BAR (Solidroad Dusk) ================= -->
+  <div id="top-bar" class="bg-[#15202d] text-[#fbf7eb]/80 text-xs py-2.5 px-4 border-b border-white/10 transition-all">
+    <div class="max-w-7xl mx-auto flex items-center justify-between gap-4 font-mono">
+      <div class="flex items-center gap-2.5 overflow-hidden text-ellipsis whitespace-nowrap">
+        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-primary text-neutral-600 tracking-wide">
+          PPDB 2026/2027
+        </span>
+        <span class="text-[#fbf7eb]/90 hidden sm:inline">Penerimaan Peserta Didik Baru Gelombang 1 telah resmi dibuka.</span>
+        <button onclick="openPPDBInfo()" class="underline hover:text-primary font-medium cursor-pointer ml-1 inline-flex items-center gap-1">
+          Pelajari Persyaratan &rarr;
+        </button>
+      </div>
+      <div class="hidden md:flex items-center gap-6 text-[#fbf7eb]/60">
+        <span class="flex items-center gap-1.5"><i data-lucide="phone" class="w-3.5 h-3.5 text-primary"></i> (0921) 7890-123</span>
+        <span class="flex items-center gap-1.5"><i data-lucide="mail" class="w-3.5 h-3.5 text-primary"></i> info@sman1haltim.sch.id</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= STICKY HEADER & NAVBAR (Solidroad Frosted Glass) ================= -->
+  <header id="main-header" class="sticky top-0 z-50 bg-[#1b2838]/90 backdrop-blur-md border-b border-white/10 text-white transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        
+        <!-- School Emblem & Identity -->
+        <a href="#beranda" class="flex items-center gap-3.5 group shrink-0">
+          <div class="w-11 h-11 rounded-full bg-white p-0.5 border border-white/20 shadow-sm flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform overflow-hidden">
+            <img src="logo.png" alt="Logo SMAN 1 Halmahera Timur" class="w-full h-full object-contain" />
+          </div>
+          <div>
+            <span class="block font-serif text-lg sm:text-xl font-normal text-[#fbf7eb] tracking-tight leading-none group-hover:text-primary transition-colors">
+              SMA Negeri 1 Halmahera Timur
+            </span>
+            <span class="block text-[10px] font-mono font-medium tracking-widest text-[#fbf7eb]/60 uppercase mt-1">
+              Fadel Dela Na Mafia
+            </span>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation Menu (Solidroad Pill Capsule with Dropdown) -->
+        <nav class="hidden lg:flex items-center nav-pill-wrapper gap-1">
+          <a href="#beranda" class="nav-link">Beranda</a>
+
+          <!-- Dropdown: Profil (Gabungan Profil, Pilar Unggulan, Direktori Guru) -->
+          <div class="relative group-dropdown">
+            <button id="navProfilBtn" type="button" class="nav-link cursor-pointer" aria-expanded="false" aria-haspopup="true">
+              <span>Profil</span>
+              <i data-lucide="chevron-down" class="w-3.5 h-3.5 opacity-70 transition-transform duration-200"></i>
+            </button>
+
+            <!-- Dropdown Menu -->
+            <div class="nav-dropdown-menu">
+              <div class="nav-dropdown-panel space-y-1">
+                <a href="#profil" class="nav-dropdown-item">
+                  <div class="nav-dropdown-icon">
+                    <i data-lucide="school" class="w-4 h-4"></i>
+                  </div>
+                  <div class="text-left">
+                    <span class="block text-xs font-semibold text-white">Profil &amp; Sambutan</span>
+                    <span class="block text-[11px] text-[#fbf7eb]/55 font-normal">Sambutan Kepala Sekolah, Visi &amp; Misi</span>
+                  </div>
+                </a>
+
+                <a href="#direktori" class="nav-dropdown-item">
+                  <div class="nav-dropdown-icon">
+                    <i data-lucide="users" class="w-4 h-4"></i>
+                  </div>
+                  <div class="text-left">
+                    <span class="block text-xs font-semibold text-white">Direktori Guru</span>
+                    <span class="block text-[11px] text-[#fbf7eb]/55 font-normal">Daftar tenaga pendidik &amp; mapel</span>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <a href="#berita" class="nav-link">Kabar &amp; Berita</a>
+          <a href="#pengumuman" class="nav-link">Pengumuman</a>
+          <a href="#galeri" class="nav-link">Galeri</a>
+          <a href="#kontak" class="nav-link">Kontak</a>
+        </nav>
+
+        <!-- Right Action Button (Clean Solidroad Primary CTA) -->
+        <div class="hidden sm:flex items-center gap-2.5">
+          <button onclick="openPPDBInfo()" class="btn-solid-primary text-xs !py-2.5 !px-5 font-mono uppercase tracking-wider">
+            <span>Portal PPDB</span>
+            <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+          </button>
+        </div>
+
+        <!-- Mobile Menu Hamburger Button -->
+        <button id="mobile-menu-btn" class="lg:hidden p-2 rounded-xl text-white hover:bg-white/10 transition-colors" aria-label="Menu Navigasi">
+          <i data-lucide="menu" class="w-6 h-6"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer Navigation -->
+    <div id="mobile-menu" class="hidden lg:hidden border-t border-white/10 bg-[#1b2838]/98 backdrop-blur-xl px-5 pt-4 pb-6 space-y-2">
+      <a href="#beranda" class="mobile-nav-link block px-3 py-2 rounded-xl text-base font-medium text-white hover:bg-white/10">Beranda</a>
+      
+      <!-- Grouped Profil Accordion/Box in Mobile -->
+      <div class="bg-white/5 border border-white/10 rounded-2xl p-3 space-y-1">
+        <span class="block px-2 text-[10px] font-mono font-bold uppercase tracking-wider text-primary">Profil &amp; Tenaga Pendidik</span>
+        <a href="#profil" class="mobile-nav-link flex items-center gap-2.5 px-2 py-2 rounded-xl text-sm font-medium text-[#fbf7eb]/85 hover:text-white hover:bg-white/10">
+          <i data-lucide="school" class="w-4 h-4 text-primary"></i>
+          <span>Profil &amp; Sambutan</span>
+        </a>
+        <a href="#direktori" class="mobile-nav-link flex items-center gap-2.5 px-2 py-2 rounded-xl text-sm font-medium text-[#fbf7eb]/85 hover:text-white hover:bg-white/10">
+          <i data-lucide="users" class="w-4 h-4 text-primary"></i>
+          <span>Direktori Guru</span>
+        </a>
+      </div>
+
+      <a href="#berita" class="mobile-nav-link block px-3 py-2 rounded-xl text-base font-medium text-white hover:bg-white/10">Kabar &amp; Berita</a>
+      <a href="#pengumuman" class="mobile-nav-link block px-3 py-2 rounded-xl text-base font-medium text-white hover:bg-white/10">Pengumuman</a>
+      <a href="#galeri" class="mobile-nav-link block px-3 py-2 rounded-xl text-base font-medium text-white hover:bg-white/10">Galeri Foto</a>
+      <a href="#kontak" class="mobile-nav-link block px-3 py-2 rounded-xl text-base font-medium text-white hover:bg-white/10">Kontak Kami</a>
+      
+      <div class="pt-3 border-t border-white/10">
+        <button onclick="openPPDBInfo()" class="btn-solid-primary w-full text-center justify-center">
+          <span>Pendaftaran PPDB 2026/2027</span>
+          <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ================= SECTION: BERANDA (HERO - SOLIDROAD STYLE) ================= -->
+    <section id="beranda" class="solidroad-hero">
+      
+      <!-- Embedded Background Photo (foto-latar.jpg) with Parallax & Atmospheric Dusk Lighting -->
+      <div class="solidroad-hero-media" data-parallax="0.25">
+        <img src="foto-latar.jpg" alt="Siswa-siswi SMA Negeri 1 Halmahera Timur" style="object-position: center 35%;" />
+      </div>
+      <div class="solidroad-hero-overlay"></div>
+
+      <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-36 pb-16 min-h-screen flex flex-col justify-end">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-10 items-end">
+
+          <!-- Left Column: Typography & Solidroad Buttons -->
+          <div class="lg:col-span-8 space-y-7">
+            
+            <!-- Solidroad Signature Lime Pill Badge -->
+            <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full text-xs font-mono font-medium tracking-wider bg-primary text-neutral-600 shadow-sm reveal" style="--d:100ms">
+              <span class="w-2 h-2 rounded-full bg-neutral-600 animate-pulse"></span>
+              <span>SMAN 1 HALMAHERA TIMUR • AKREDITASI A UNGGUL</span>
+            </div>
+
+            <!-- Solidroad Arizona-style Serif Headline -->
+            <h1 data-split class="font-serif text-[clamp(2.8rem,5.8vw,5.2rem)] font-normal leading-[1.03] text-warm-gray-5 tracking-tight">
+              Membina generasi <em class="italic text-primary">berkarakter luhur</em> &amp; siap memimpin masa depan.
+            </h1>
+
+            <p class="text-base sm:text-lg max-w-xl font-light leading-relaxed text-[#fbf7eb]/85 reveal" style="--d:500ms">
+              SMA Negeri 1 Halmahera Timur memadukan kurikulum akademik komprehensif, keluhuran budi pekerti <em>"Fadel Dela Na Mafia"</em>, serta ekosistem pembelajaran sains dan teknologi modern untuk menyongsong masa depan yang dinamis.
+            </p>
+
+            <!-- CTA Actions (Solidroad Primary & Secondary) -->
+            <div class="pt-2 flex flex-wrap items-center gap-3.5 reveal" style="--d:650ms">
+              <button onclick="openPPDBInfo()" class="btn-solid-primary">
+                <span>Daftar PPDB Sekarang</span>
+                <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+              </button>
+              <a href="#profil" class="btn-solid-secondary">
+                <span>Jelajahi Profil Sekolah</span>
+                <i data-lucide="arrow-right" class="w-4 h-4"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Right Column: Hero Visual Card with foto-motto.jpg -->
+          <div class="lg:col-span-4 hidden lg:block reveal" style="--d:800ms">
+            <div class="solid-hero-card relative aspect-[4/5]">
+              <img src="foto-motto.jpg" alt="Siswa-siswi SMA Negeri 1 Halmahera Timur" class="w-full h-full object-cover" style="object-position:center 80%" />
+              
+              <!-- Floating Motto Badge -->
+              <div class="solid-hero-badge absolute bottom-4 left-4 right-4 p-4 rounded-2xl flex items-center justify-between gap-3 shadow-lg">
+                <div class="flex items-center gap-3">
+                  <div class="w-11 h-11 rounded-full bg-white p-0.5 flex items-center justify-center shrink-0 overflow-hidden shadow-sm">
+                    <img src="logo.png" alt="Logo SMAN 1 Halmahera Timur" class="w-full h-full object-contain" />
+                  </div>
+                  <div>
+                    <p class="font-mono text-[10px] uppercase tracking-wider text-primary">Motto Sekolah</p>
+                    <h4 class="font-serif text-lg font-normal text-warm-gray-5 leading-tight">Fadel Dela Na Mafia</h4>
+                  </div>
+                </div>
+                <div class="px-2.5 py-1 rounded-full text-xs font-bold font-mono bg-primary text-neutral-600 shadow-sm shrink-0">
+                  ★ A
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- ================= STATS COUNTER BAR (Solidroad Divided Metric Tiles) ================= -->
+        <div class="mt-14 grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+          <div class="solid-stat-tile reveal" style="--d:900ms">
+            <span class="num block mb-1" data-count="24" data-suffix="+">24+</span>
+            <span class="lbl">Ruang Kelas &amp; Lab</span>
+          </div>
+          <div class="solid-stat-tile reveal" style="--d:1000ms">
+            <span id="heroStatGuru" class="num block mb-1" data-count="78" data-suffix="+">78+</span>
+            <span class="lbl">Pendidik &amp; Tenaga Ahli</span>
+          </div>
+          <div class="solid-stat-tile reveal" style="--d:1100ms">
+            <span class="num block mb-1" data-count="100" data-suffix="%">100%</span>
+            <span class="lbl">Lulusan Diterima PTN / LN</span>
+          </div>
+          <div class="solid-stat-tile reveal" style="--d:1200ms">
+            <span class="num block mb-1" data-count="36" data-suffix="+">36+</span>
+            <span class="lbl">Ekstrakurikuler &amp; Riset</span>
+          </div>
+        </div>
+
+        <div class="hidden sm:flex items-center gap-3 mt-8 text-xs font-mono text-[#fbf7eb]/60">
+          <span class="w-8 h-px bg-white/20"></span> Gulir ke bawah untuk eksplorasi
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= MARQUEE STRIP (Solidroad Clean Dark Strip) ================= -->
+    <div class="bg-[#1b2838] border-y border-white/10 py-4 overflow-hidden" aria-hidden="true">
+      <div class="solid-marquee-track text-xs font-mono font-medium uppercase tracking-wider text-[#fbf7eb]/70">
+        <span class="flex items-center gap-2"><i data-lucide="award" class="w-3.5 h-3.5 text-primary"></i> Kurikulum Merdeka Mandiri</span>
+        <span class="text-white/20">•</span>
+        <span class="flex items-center gap-2"><i data-lucide="flask-conical" class="w-3.5 h-3.5 text-primary"></i> Laboratorium Sains &amp; Green Lab</span>
+        <span class="text-white/20">•</span>
+        <span class="flex items-center gap-2"><i data-lucide="graduation-cap" class="w-3.5 h-3.5 text-primary"></i> Sukses SNBT &amp; Kedinasan</span>
+        <span class="text-white/20">•</span>
+        <span class="flex items-center gap-2"><i data-lucide="shield-check" class="w-3.5 h-3.5 text-primary"></i> Akreditasi A Unggul BAN-S/M</span>
+        <span class="text-white/20">•</span>
+        <span class="flex items-center gap-2"><i data-lucide="sparkles" class="w-3.5 h-3.5 text-primary"></i> Semboyan Fadel Dela Na Mafia</span>
+        <span class="text-white/20">•</span>
+        
+        <!-- Repeat for continuous marquee -->
+        <span class="flex items-center gap-2"><i data-lucide="award" class="w-3.5 h-3.5 text-primary"></i> Kurikulum Merdeka Mandiri</span>
+        <span class="text-white/20">•</span>
+        <span class="flex items-center gap-2"><i data-lucide="flask-conical" class="w-3.5 h-3.5 text-primary"></i> Laboratorium Sains &amp; Green Lab</span>
+        <span class="text-white/20">•</span>
+        <span class="flex items-center gap-2"><i data-lucide="graduation-cap" class="w-3.5 h-3.5 text-primary"></i> Sukses SNBT &amp; Kedinasan</span>
+        <span class="text-white/20">•</span>
+        <span class="flex items-center gap-2"><i data-lucide="shield-check" class="w-3.5 h-3.5 text-primary"></i> Akreditasi A Unggul BAN-S/M</span>
+        <span class="text-white/20">•</span>
+        <span class="flex items-center gap-2"><i data-lucide="sparkles" class="w-3.5 h-3.5 text-primary"></i> Semboyan Fadel Dela Na Mafia</span>
+      </div>
+    </div>
+
+    <!-- ================= SECTION: PROFIL SEKOLAH ================= -->
+    <section id="profil" class="py-20 sm:py-28 bg-white border-b border-neutral-200/50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <!-- Section Header -->
+        <div class="text-center max-w-2xl mx-auto mb-16">
+          <span class="inline-flex items-center gap-2 text-xs font-mono font-medium uppercase tracking-widest text-neutral-400 mb-2">
+            <span class="w-1.5 h-1.5 rounded-full bg-primary"></span> Tentang Kami
+          </span>
+          <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-dark tracking-tight">
+            Profil SMA Negeri 1 Halmahera Timur
+          </h2>
+          <p class="mt-3 text-neutral-600 text-sm sm:text-base leading-relaxed">
+            Menjadi pelopor institusi pendidikan menengah atas yang mengintegrasikan kecerdasan intelektual, kematangan spiritual, dan etika kemanusiaan.
+          </p>
+        </div>
+
+        <!-- Sambutan Kepala Sekolah Card -->
+        <div class="mb-16 solid-card-warm p-8 sm:p-12 grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 items-center">
+          <div class="lg:col-span-4 text-center lg:text-left">
+            <div class="relative inline-block w-48 h-64 sm:w-56 sm:h-72 rounded-2xl overflow-hidden bg-white border border-neutral-200 shadow-md">
+              <img 
+                src="kepala-sekolah.jpg" 
+                alt="Kepala Sekolah SMA Negeri 1 Halmahera Timur" 
+                class="w-full h-full object-cover object-top"
+              />
+            </div>
+            <div class="mt-4">
+              <h4 class="font-serif font-normal text-dark text-xl">Kepala Sekolah</h4>
+              <p class="text-xs text-neutral-500 font-mono mt-0.5">SMA Negeri 1 Halmahera Timur</p>
+            </div>
+          </div>
+          
+          <div class="lg:col-span-8 space-y-4">
+            <span class="inline-flex items-center gap-1.5 text-xs font-mono font-medium tracking-wider uppercase text-neutral-400">
+              <i data-lucide="quote" class="w-4 h-4 text-primary"></i> Sambutan Hangat
+            </span>
+            <h3 class="font-serif text-2xl sm:text-3xl font-normal text-dark leading-snug">
+              "Pendidikan Bukan Sekadar Mengisi Wadah, Melainkan Menyalakan Api Pengetahuan."
+            </h3>
+            <p class="text-neutral-600 text-sm sm:text-base leading-relaxed">
+              Selamat datang di portal resmi SMA Negeri 1 Halmahera Timur. Kami mendedikasikan seluruh ekosistem sekolah ini untuk mendampingi para siswa menemukan potensi dan cita-cita terbaiknya. Melalui perpaduan pengajaran berbasis kurikulum merdeka, ruang eksplorasi minat bakat, dan keteladanan budi pekerti, kami berikhtiar mencetak generasi penerus yang berdaya saing tinggi serta berakhlak mulia.
+            </p>
+            <p class="text-neutral-600 text-sm sm:text-base leading-relaxed">
+              Kami menyambut sinergi hangat dari para orang tua, alumni, dan masyarakat untuk bersama-sama mendidik tunas bangsa menuju masa depan gemilang di Halmahera Timur.
+            </p>
+          </div>
+        </div>
+
+        <!-- Interactive Profile Tabs: Visi Misi, Nilai, Fasilitas, Sejarah -->
+        <div class="space-y-8">
+          <!-- Tab Navigation Buttons -->
+          <div class="flex flex-wrap items-center justify-center gap-2 sm:gap-3">
+            <button data-tab="visimisi" class="profile-tab-btn active px-6 py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all bg-dark text-primary shadow-sm">
+              Visi &amp; Misi
+            </button>
+            <button data-tab="nilai" class="profile-tab-btn px-6 py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all bg-warm-gray-15 text-dark hover:bg-warm-gray-25">
+              Nilai Luhur Sekolah
+            </button>
+            <button data-tab="fasilitas" class="profile-tab-btn px-6 py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all bg-warm-gray-15 text-dark hover:bg-warm-gray-25">
+              Fasilitas Unggulan
+            </button>
+            <button data-tab="sejarah" class="profile-tab-btn px-6 py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all bg-warm-gray-15 text-dark hover:bg-warm-gray-25">
+              Sejarah Singkat
+            </button>
+          </div>
+
+          <!-- Tab Content Panes -->
+          <div class="solid-card p-6 sm:p-10 min-h-[320px]">
+            
+            <!-- Pane 1: Visi & Misi -->
+            <div id="tab-visimisi" class="profile-tab-pane">
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12">
+                <div class="space-y-4">
+                  <div class="inline-flex items-center gap-2 text-xs font-mono font-medium uppercase tracking-wider text-neutral-400">
+                    <i data-lucide="compass" class="w-4 h-4 text-primary"></i> Panduan Langkah
+                  </div>
+                  <h3 class="font-serif text-2xl sm:text-3xl font-normal text-dark">Visi Sekolah</h3>
+                  <div class="p-6 rounded-2xl bg-warm-gray-5 border border-neutral-200/80 text-neutral-700 text-base leading-relaxed italic">
+                    "Terwujudnya lulusan SMA Negeri 1 Halmahera Timur yang beriman tangguh, berakhlak mulia, berwawasan global, serta unggul dalam ilmu pengetahuan dan teknologi."
+                  </div>
+                </div>
+
+                <div class="space-y-4">
+                  <div class="inline-flex items-center gap-2 text-xs font-mono font-medium uppercase tracking-wider text-neutral-400">
+                    <i data-lucide="target" class="w-4 h-4 text-primary"></i> Aksi Nyata
+                  </div>
+                  <h3 class="font-serif text-2xl sm:text-3xl font-normal text-dark">Misi Sekolah</h3>
+                  <ul class="space-y-3 text-sm text-neutral-600">
+                    <li class="flex items-start gap-3">
+                      <span class="w-5 h-5 rounded-full bg-dark text-primary flex items-center justify-center text-xs shrink-0 mt-0.5 font-mono font-bold">1</span>
+                      <span>Menyelenggarakan proses pembelajaran berdiferensiasi yang memantik daya kritis, kreativitas, dan nalar analitis.</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                      <span class="w-5 h-5 rounded-full bg-dark text-primary flex items-center justify-center text-xs shrink-0 mt-0.5 font-mono font-bold">2</span>
+                      <span>Menumbuhkembangkan budi pekerti luhur, toleransi kebhinekaan, dan empati sosial melalui keteladanan harian.</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                      <span class="w-5 h-5 rounded-full bg-dark text-primary flex items-center justify-center text-xs shrink-0 mt-0.5 font-mono font-bold">3</span>
+                      <span>Memfasilitasi riset sains terapan, teknologi kecerdasan buatan, dan kewirausahaan berbasis keberlanjutan.</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                      <span class="w-5 h-5 rounded-full bg-dark text-primary flex items-center justify-center text-xs shrink-0 mt-0.5 font-mono font-bold">4</span>
+                      <span>Membangun kemitraan strategis dengan perguruan tinggi terkemuka dan institusi industri dalam maupun luar negeri.</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- Pane 2: Nilai Luhur Sekolah -->
+            <div id="tab-nilai" class="profile-tab-pane hidden">
+              <div class="mb-6 p-5 rounded-2xl bg-warm-gray-5 border border-neutral-200 flex flex-col sm:flex-row items-center gap-4 text-center sm:text-left">
+                <div class="w-14 h-14 rounded-full bg-white p-1 border border-neutral-200 shadow-sm shrink-0 flex items-center justify-center overflow-hidden">
+                  <img src="logo.png" alt="Logo SMAN 1 Halmahera Timur" class="w-full h-full object-contain" />
+                </div>
+                <div>
+                  <h4 class="font-serif font-normal text-dark text-lg">Falsafah Sekolah: Fadel Dela Na Mafia</h4>
+                  <p class="text-xs text-neutral-600 leading-relaxed mt-0.5">
+                    Semboyan kearifan lokal Halmahera Timur yang menjiwai seluruh napas pendidikan: menjunjung tinggi gotong royong, persatuan, dan ketulusan hati dalam menggapai kemuliaan ilmu dan budi pekerti.
+                  </p>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+                <div class="p-5 rounded-2xl bg-warm-gray-5 border border-neutral-200 space-y-2.5">
+                  <div class="w-9 h-9 rounded-xl bg-dark text-primary flex items-center justify-center">
+                    <i data-lucide="shield-check" class="w-4 h-4"></i>
+                  </div>
+                  <h4 class="font-serif font-normal text-dark text-lg">Integritas</h4>
+                  <p class="text-xs text-neutral-600 leading-relaxed">
+                    Menjunjung kejujuran akademik dan tanggung jawab terhadap perkataan serta perbuatan di manapun berada.
+                  </p>
+                </div>
+
+                <div class="p-5 rounded-2xl bg-warm-gray-5 border border-neutral-200 space-y-2.5">
+                  <div class="w-9 h-9 rounded-xl bg-dark text-primary flex items-center justify-center">
+                    <i data-lucide="sparkles" class="w-4 h-4"></i>
+                  </div>
+                  <h4 class="font-serif font-normal text-dark text-lg">Keunggulan</h4>
+                  <p class="text-xs text-neutral-600 leading-relaxed">
+                    Senantiasa berikhtiar memberikan mutu terbaik dalam pencapaian akademis, karya riset, maupun kejuaraan.
+                  </p>
+                </div>
+
+                <div class="p-5 rounded-2xl bg-warm-gray-5 border border-neutral-200 space-y-2.5">
+                  <div class="w-9 h-9 rounded-xl bg-dark text-primary flex items-center justify-center">
+                    <i data-lucide="users" class="w-4 h-4"></i>
+                  </div>
+                  <h4 class="font-serif font-normal text-dark text-lg">Kolaborasi</h4>
+                  <p class="text-xs text-neutral-600 leading-relaxed">
+                    Menghargai keragaman sudut pandang dan bersinergi dalam memecahkan tantangan bersama-sama.
+                  </p>
+                </div>
+
+                <div class="p-5 rounded-2xl bg-warm-gray-5 border border-neutral-200 space-y-2.5">
+                  <div class="w-9 h-9 rounded-xl bg-dark text-primary flex items-center justify-center">
+                    <i data-lucide="leaf" class="w-4 h-4"></i>
+                  </div>
+                  <h4 class="font-serif font-normal text-dark text-lg">Kepedulian</h4>
+                  <p class="text-xs text-neutral-600 leading-relaxed">
+                    Peka terhadap sesama manusia serta aktif merawat kelestarian lingkungan hidup bagi generasi penerus.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Pane 3: Fasilitas Unggulan -->
+            <div id="tab-fasilitas" class="profile-tab-pane hidden">
+              <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                <div class="flex items-start gap-4 p-4 rounded-xl border border-neutral-200 bg-warm-gray-5">
+                  <div class="w-10 h-10 rounded-lg bg-white border border-neutral-200 text-dark flex items-center justify-center shrink-0">
+                    <i data-lucide="laptop" class="w-5 h-5"></i>
+                  </div>
+                  <div>
+                    <h5 class="font-semibold text-dark text-sm">Smart Hybrid Classrooms</h5>
+                    <p class="text-xs text-neutral-500 mt-1">Layar interaktif digital, multimedia proyektor, dan internet kecepatan tinggi.</p>
+                  </div>
+                </div>
+
+                <div class="flex items-start gap-4 p-4 rounded-xl border border-neutral-200 bg-warm-gray-5">
+                  <div class="w-10 h-10 rounded-lg bg-white border border-neutral-200 text-dark flex items-center justify-center shrink-0">
+                    <i data-lucide="flask-conical" class="w-5 h-5"></i>
+                  </div>
+                  <div>
+                    <h5 class="font-semibold text-dark text-sm">Laboratorium Sains &amp; Robotik</h5>
+                    <p class="text-xs text-neutral-500 mt-1">Peralatan instrumen riset fisika terapan, biologi molekuler, dan mikroprosesor.</p>
+                  </div>
+                </div>
+
+                <div class="flex items-start gap-4 p-4 rounded-xl border border-neutral-200 bg-warm-gray-5">
+                  <div class="w-10 h-10 rounded-lg bg-white border border-neutral-200 text-dark flex items-center justify-center shrink-0">
+                    <i data-lucide="book-open" class="w-5 h-5"></i>
+                  </div>
+                  <div>
+                    <h5 class="font-semibold text-dark text-sm">Perpustakaan &amp; E-Journal</h5>
+                    <p class="text-xs text-neutral-500 mt-1">Akses jutaan literatur akademik internasional dan bilik membaca tenang.</p>
+                  </div>
+                </div>
+
+                <div class="flex items-start gap-4 p-4 rounded-xl border border-neutral-200 bg-warm-gray-5">
+                  <div class="w-10 h-10 rounded-lg bg-white border border-neutral-200 text-dark flex items-center justify-center shrink-0">
+                    <i data-lucide="activity" class="w-5 h-5"></i>
+                  </div>
+                  <div>
+                    <h5 class="font-semibold text-dark text-sm">Gedung Olahraga Serbaguna</h5>
+                    <p class="text-xs text-neutral-500 mt-1">Lapangan indoor basket, futsal, bulu tangkis, dan fasilitas kebugaran.</p>
+                  </div>
+                </div>
+
+                <div class="flex items-start gap-4 p-4 rounded-xl border border-neutral-200 bg-warm-gray-5">
+                  <div class="w-10 h-10 rounded-lg bg-white border border-neutral-200 text-dark flex items-center justify-center shrink-0">
+                    <i data-lucide="music" class="w-5 h-5"></i>
+                  </div>
+                  <div>
+                    <h5 class="font-semibold text-dark text-sm">Studio Seni Musik &amp; Teater</h5>
+                    <p class="text-xs text-neutral-500 mt-1">Instrumen tradisional daerah, alat musik akustik/elektrik, dan panggung.</p>
+                  </div>
+                </div>
+
+                <div class="flex items-start gap-4 p-4 rounded-xl border border-neutral-200 bg-warm-gray-5">
+                  <div class="w-10 h-10 rounded-lg bg-white border border-neutral-200 text-dark flex items-center justify-center shrink-0">
+                    <i data-lucide="heart-pulse" class="w-5 h-5"></i>
+                  </div>
+                  <div>
+                    <h5 class="font-semibold text-dark text-sm">Pusat Kesehatan &amp; Konseling</h5>
+                    <p class="text-xs text-neutral-500 mt-1">Layanan bimbingan konseling karir ramah remaja dan unit kesehatan siaga.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Pane 4: Sejarah Singkat -->
+            <div id="tab-sejarah" class="profile-tab-pane hidden">
+              <div class="max-w-3xl mx-auto space-y-5 text-sm text-neutral-600 leading-relaxed">
+                <p>
+                  SMA Negeri 1 Halmahera Timur didirikan sebagai wujud komitmen menghadirkan layanan pendidikan menengah atas yang berkualitas dan berdaya saing bagi putra-putri di Kabupaten Halmahera Timur.
+                </p>
+                <p>
+                  Seiring berjalannya waktu, sekolah terus bertransformasi mengadopsi kemajuan teknologi pembelajaran, peningkatan kompetensi dewan guru, dan penyediaan fasilitas penunjang belajar yang representatif. Lulusan sekolah ini telah banyak berkontribusi positif di berbagai perguruan tinggi negeri terkemuka maupun dunia profesional.
+                </p>
+                <div class="p-4 bg-warm-gray-5 rounded-xl border border-neutral-200 text-dark font-medium text-xs flex items-center gap-3">
+                  <i data-lucide="award" class="w-5 h-5 text-dark shrink-0"></i>
+                  <span>Terakreditasi A (Unggul) oleh Badan Akreditasi Nasional Sekolah/Madrasah (BAN-S/M).</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================= SECTION: DIREKTORI GURU (Supabase Realtime Live Sync) ================= -->
+    <section id="direktori" class="py-20 sm:py-28 bg-warm-canvas border-b border-neutral-200/50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <!-- Section Header -->
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
+          <div>
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-[11px] font-mono font-medium bg-primary text-neutral-600 border border-neutral-200/60 mb-3 shadow-sm">
+              <span class="w-2 h-2 rounded-full bg-neutral-600 animate-pulse"></span>
+              Live Sync Supabase Database
+            </div>
+            <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-dark tracking-tight">
+              Direktori Tenaga Pendidik
+            </h2>
+            <p class="text-neutral-600 text-sm max-w-xl mt-2">
+              Daftar dewan guru dan mata pelajaran yang diampu di SMA Negeri 1 Halmahera Timur.
+            </p>
+          </div>
+
+          <!-- Solidroad Search Bar -->
+          <div class="relative w-full sm:w-80 self-start md:self-auto">
+            <input 
+              type="text" 
+              id="frontSearchGuru" 
+              oninput="handleFrontSearchGuru(this.value)" 
+              placeholder="Cari nama guru atau mata pelajaran..." 
+              class="w-full pl-10 pr-4 py-3 text-xs sm:text-sm rounded-full border border-neutral-200 bg-white shadow-sm focus:outline-none focus:border-dark transition-colors"
+            />
+            <i data-lucide="search" class="w-4 h-4 text-neutral-400 absolute left-3.5 top-1/2 -translate-y-1/2"></i>
+          </div>
+        </div>
+
+        <div class="flex items-center justify-between mb-6">
+          <span class="text-xs font-mono text-neutral-500 font-medium" id="frontGuruSummaryText">Memuat data guru...</span>
+        </div>
+
+        <!-- Cards Grid for Guru (Name & Mapel Only - Privacy Compliant) -->
+        <div id="frontGuruGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          <div class="col-span-full py-12 text-center text-neutral-400 text-sm">
+            <div class="inline-block animate-spin w-6 h-6 border-2 border-neutral-300 border-t-dark rounded-full mb-3"></div>
+            <p class="font-mono">Memuat data guru dari Supabase...</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================= SECTION: BERITA & ARTIKEL ================= -->
+    <section id="berita" class="py-20 sm:py-28 bg-white border-b border-neutral-200/50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <!-- Section Header -->
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+          <div>
+            <span class="inline-flex items-center gap-2 text-xs font-mono font-medium uppercase tracking-widest text-neutral-400 mb-2">
+              <span class="w-1.5 h-1.5 rounded-full bg-primary"></span> Wawasan &amp; Kabar
+            </span>
+            <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-dark tracking-tight">
+              Berita &amp; Artikel Sekolah
+            </h2>
+            <p class="text-neutral-600 text-sm max-w-xl mt-2">
+              Liputan prestasi, artikel edukasi guru, dan rekam jejak dinamika kegiatan belajar siswa terkini.
+            </p>
+          </div>
+
+          <!-- Search Bar -->
+          <div class="relative w-full md:w-72">
+            <input 
+              type="text" 
+              id="articles-search"
+              placeholder="Cari berita atau artikel..." 
+              class="w-full pl-10 pr-4 py-3 rounded-full border border-neutral-200 text-sm focus:outline-none focus:border-dark transition-colors bg-warm-gray-5 shadow-sm"
+            />
+            <i data-lucide="search" class="w-4 h-4 text-neutral-400 absolute left-3.5 top-1/2 -translate-y-1/2"></i>
+          </div>
+        </div>
+
+        <!-- Filter Tags (Solidroad Pill style) -->
+        <div class="flex flex-wrap items-center gap-2 mb-8">
+          <button data-category="all" class="article-filter-btn px-5 py-2 rounded-full text-xs font-semibold bg-dark text-primary shadow-sm transition-all">
+            Semua
+          </button>
+          <button data-category="Prestasi" class="article-filter-btn px-5 py-2 rounded-full text-xs font-semibold bg-warm-gray-15 text-dark hover:bg-warm-gray-25 transition-all">
+            Prestasi
+          </button>
+          <button data-category="Akademik" class="article-filter-btn px-5 py-2 rounded-full text-xs font-semibold bg-warm-gray-15 text-dark hover:bg-warm-gray-25 transition-all">
+            Akademik
+          </button>
+          <button data-category="Kegiatan" class="article-filter-btn px-5 py-2 rounded-full text-xs font-semibold bg-warm-gray-15 text-dark hover:bg-warm-gray-25 transition-all">
+            Kegiatan
+          </button>
+        </div>
+
+        <!-- Articles Grid Container -->
+        <div id="articles-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-7">
+          <!-- Dynamically injected via script.js -->
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================= SECTION: PENGUMUMAN ================= -->
+    <section id="pengumuman" class="py-20 sm:py-28 bg-warm-canvas border-b border-neutral-200/50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-2xl mx-auto mb-16">
+          <span class="inline-flex items-center gap-2 text-xs font-mono font-medium uppercase tracking-widest text-neutral-400 mb-2">
+            <span class="w-1.5 h-1.5 rounded-full bg-primary"></span> Informasi Resmi
+          </span>
+          <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-dark tracking-tight">
+            Pengumuman &amp; Agenda Penting
+          </h2>
+          <p class="text-neutral-600 text-sm sm:text-base leading-relaxed mt-2">
+            Pemberitahuan administratif resmi, jadwal asesmen berkala, serta edaran kegiatan bagi seluruh civitas akademika.
+          </p>
+        </div>
+
+        <!-- Announcements List -->
+        <div id="announcements-container" class="space-y-4 max-w-4xl mx-auto">
+          <!-- Dynamically injected via script.js -->
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================= SECTION: GALERI ================= -->
+    <section id="galeri" class="py-20 sm:py-28 bg-white border-b border-neutral-200/50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+          <div>
+            <span class="inline-flex items-center gap-2 text-xs font-mono font-medium uppercase tracking-widest text-neutral-400 mb-2">
+              <span class="w-1.5 h-1.5 rounded-full bg-primary"></span> Dokumentasi Kampus
+            </span>
+            <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-dark tracking-tight">
+              Galeri Fasilitas &amp; Aktivitas
+            </h2>
+            <p class="text-neutral-600 text-sm max-w-xl mt-2">
+              Menyusuri momen kebersamaan, sarana belajar modern, dan keceriaan proses pembelajaran para siswa di lingkungan kampus.
+            </p>
+          </div>
+
+          <!-- Gallery Filter Buttons -->
+          <div class="flex flex-wrap items-center gap-2">
+            <button data-filter="all" class="gallery-filter-btn px-5 py-2 rounded-full text-xs font-semibold bg-dark text-primary shadow-sm transition-all">
+              Semua
+            </button>
+            <button data-filter="fasilitas" class="gallery-filter-btn px-5 py-2 rounded-full text-xs font-semibold bg-warm-gray-15 text-dark hover:bg-warm-gray-25 transition-all">
+              Fasilitas
+            </button>
+            <button data-filter="kegiatan" class="gallery-filter-btn px-5 py-2 rounded-full text-xs font-semibold bg-warm-gray-15 text-dark hover:bg-warm-gray-25 transition-all">
+              Kegiatan Siswa
+            </button>
+            <button data-filter="prestasi" class="gallery-filter-btn px-5 py-2 rounded-full text-xs font-semibold bg-warm-gray-15 text-dark hover:bg-warm-gray-25 transition-all">
+              Prestasi
+            </button>
+          </div>
+        </div>
+
+        <!-- Gallery Grid -->
+        <div id="gallery-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          <!-- Dynamically injected via script.js -->
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================= SECTION: KONTAK & LOKASI ================= -->
+    <section id="kontak" class="py-20 sm:py-28 bg-warm-canvas">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-2xl mx-auto mb-16">
+          <span class="inline-flex items-center gap-2 text-xs font-mono font-medium uppercase tracking-widest text-neutral-400 mb-2">
+            <span class="w-1.5 h-1.5 rounded-full bg-primary"></span> Terhubung Bersama Kami
+          </span>
+          <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-dark tracking-tight">
+            Kontak &amp; Lokasi Kampus
+          </h2>
+          <p class="text-neutral-600 text-sm sm:text-base leading-relaxed mt-2">
+            Pintu komunikasi kami selalu terbuka untuk pertanyaan seputar kurikulum, pendaftaran siswa, maupun kunjungan kampus.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          
+          <!-- Contact Details Cards -->
+          <div class="lg:col-span-5 space-y-6">
+            <div class="solid-card p-8 space-y-6">
+              
+              <div class="flex items-start gap-4">
+                <div class="w-10 h-10 rounded-xl bg-warm-gray-15 text-dark flex items-center justify-center shrink-0">
+                  <i data-lucide="map-pin" class="w-5 h-5"></i>
+                </div>
+                <div>
+                  <h4 class="font-serif font-normal text-dark text-lg">Alamat Kampus</h4>
+                  <p class="text-xs sm:text-sm text-neutral-600 mt-1 leading-relaxed">
+                    Jl. Trans Halmahera, Kec. Maba, Kabupaten Halmahera Timur, Maluku Utara
+                  </p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-4">
+                <div class="w-10 h-10 rounded-xl bg-warm-gray-15 text-dark flex items-center justify-center shrink-0">
+                  <i data-lucide="phone" class="w-5 h-5"></i>
+                </div>
+                <div>
+                  <h4 class="font-serif font-normal text-dark text-lg">Telepon / Layanan Informasi</h4>
+                  <p class="text-xs sm:text-sm text-neutral-600 mt-1 font-mono">
+                    (0921) 7890-123 / +62 812-3456-7890
+                  </p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-4">
+                <div class="w-10 h-10 rounded-xl bg-warm-gray-15 text-dark flex items-center justify-center shrink-0">
+                  <i data-lucide="mail" class="w-5 h-5"></i>
+                </div>
+                <div>
+                  <h4 class="font-serif font-normal text-dark text-lg">Surat Elektronik</h4>
+                  <p class="text-xs sm:text-sm text-neutral-600 mt-1 font-mono">
+                    info@sman1haltim.sch.id
+                  </p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-4">
+                <div class="w-10 h-10 rounded-xl bg-warm-gray-15 text-dark flex items-center justify-center shrink-0">
+                  <i data-lucide="clock" class="w-5 h-5"></i>
+                </div>
+                <div>
+                  <h4 class="font-serif font-normal text-dark text-lg">Jam Operasional Layanan</h4>
+                  <p class="text-xs sm:text-sm text-neutral-600 mt-1">
+                    Senin – Jumat: 07.30 – 15.30 WIT <br>
+                    Sabtu (Layanan PPDB): 08.00 – 12.00 WIT
+                  </p>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Stylized Map Mockup -->
+            <div class="solid-card overflow-hidden p-2">
+              <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d127600.00000000000!2d128.25!3d0.7!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x329cbf1a88b84931%3A0x3039d80b220cc30!2sKabupaten%20Halmahera%20Timur%2C%20Maluku%20Utara!5e0!3m2!1sid!2sid!4v1700000000000!5m2!1sid!2sid" 
+                class="w-full h-44 rounded-2xl border-0" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade"
+                title="Peta Lokasi SMA Negeri 1 Halmahera Timur">
+              </iframe>
+            </div>
+          </div>
+
+          <!-- Contact Message Form -->
+          <div class="lg:col-span-7">
+            <div class="solid-card p-8 sm:p-10">
+              <h3 class="font-serif text-2xl sm:text-3xl font-normal text-dark mb-2">Konsultasi atau Kirim Pertanyaan</h3>
+              <p class="text-neutral-500 text-xs sm:text-sm mb-6">
+                Silakan isi formulir di bawah ini. Tim administrasi atau bagian konseling kami akan merespons dalam waktu 1x24 jam kerja.
+              </p>
+
+              <form id="contact-form" class="space-y-4">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label class="block text-xs font-mono font-medium text-neutral-700 uppercase tracking-wider mb-1.5" for="sender-name">
+                      Nama Lengkap *
+                    </label>
+                    <input 
+                      type="text" 
+                      id="sender-name" 
+                      required 
+                      placeholder="Contoh: Rahmat Hidayat" 
+                      class="w-full px-4 py-3 rounded-2xl border border-neutral-200 text-sm focus:outline-none focus:border-dark transition-colors bg-warm-gray-5"
+                    />
+                  </div>
+                  <div>
+                    <label class="block text-xs font-mono font-medium text-neutral-700 uppercase tracking-wider mb-1.5" for="sender-email">
+                      Alamat Email *
+                    </label>
+                    <input 
+                      type="email" 
+                      id="sender-email" 
+                      required 
+                      placeholder="email@anda.com" 
+                      class="w-full px-4 py-3 rounded-2xl border border-neutral-200 text-sm focus:outline-none focus:border-dark transition-colors bg-warm-gray-5"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label class="block text-xs font-mono font-medium text-neutral-700 uppercase tracking-wider mb-1.5" for="sender-subject">
+                    Kategori Keperluan *
+                  </label>
+                  <select 
+                    id="sender-subject" 
+                    required 
+                    class="w-full px-4 py-3 rounded-2xl border border-neutral-200 text-sm focus:outline-none focus:border-dark transition-colors bg-warm-gray-5 text-neutral-700"
+                  >
+                    <option value="" disabled selected>Pilih keperluan...</option>
+                    <option value="ppdb">Informasi PPDB &amp; Biaya Masuk</option>
+                    <option value="akademik">Konsultasi Kurikulum &amp; Beasiswa</option>
+                    <option value="kunjungan">Permohonan Kunjungan Kampus</option>
+                    <option value="lainnya">Pertanyaan Umum Lainnya</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label class="block text-xs font-mono font-medium text-neutral-700 uppercase tracking-wider mb-1.5" for="sender-message">
+                    Isi Pesan *
+                  </label>
+                  <textarea 
+                    id="sender-message" 
+                    rows="4" 
+                    required 
+                    placeholder="Tuliskan pesan atau pertanyaan Anda secara rinci..." 
+                    class="w-full px-4 py-3 rounded-2xl border border-neutral-200 text-sm focus:outline-none focus:border-dark transition-colors bg-warm-gray-5"
+                  ></textarea>
+                </div>
+
+                <button 
+                  type="submit" 
+                  class="btn-solid-primary w-full py-3.5"
+                >
+                  <i data-lucide="send" class="w-4 h-4"></i>
+                  <span>Kirim Pesan Sekarang</span>
+                </button>
+              </form>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- ================= FOOTER (Solidroad Deep Night Obsidian) ================= -->
+  <footer class="bg-[#15202d] text-[#fbf7eb]/80 pt-16 pb-12 text-sm border-t border-white/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-white/10">
+        
+        <!-- School Info Column -->
+        <div class="lg:col-span-2 space-y-4">
+          <div class="flex items-center gap-3.5">
+            <div class="w-11 h-11 rounded-full bg-white p-0.5 border border-white/20 shadow-sm flex items-center justify-center shrink-0 overflow-hidden">
+              <img src="logo.png" alt="Logo SMAN 1 Halmahera Timur" class="w-full h-full object-contain" />
+            </div>
+            <div>
+              <span class="block font-serif text-lg font-normal text-warm-gray-5 leading-none">
+                SMA Negeri 1 Halmahera Timur
+              </span>
+              <span class="block text-[10px] font-mono tracking-widest text-[#fbf7eb]/50 uppercase mt-1">
+                Fadel Dela Na Mafia
+              </span>
+            </div>
+          </div>
+          <p class="text-xs sm:text-sm text-[#fbf7eb]/60 leading-relaxed max-w-sm">
+            Menghadirkan pendidikan berkualitas yang menyeimbangkan keunggulan akademik, integritas karakter, dan kearifan lokal Halmahera Timur.
+          </p>
+          <div class="flex items-center gap-2.5 pt-1">
+            <a href="#" class="w-8 h-8 rounded-full bg-white/10 text-white hover:bg-primary hover:text-neutral-600 flex items-center justify-center transition-colors" aria-label="Instagram">
+              <i data-lucide="instagram" class="w-4 h-4"></i>
+            </a>
+            <a href="#" class="w-8 h-8 rounded-full bg-white/10 text-white hover:bg-primary hover:text-neutral-600 flex items-center justify-center transition-colors" aria-label="YouTube">
+              <i data-lucide="youtube" class="w-4 h-4"></i>
+            </a>
+            <a href="#" class="w-8 h-8 rounded-full bg-white/10 text-white hover:bg-primary hover:text-neutral-600 flex items-center justify-center transition-colors" aria-label="Facebook">
+              <i data-lucide="facebook" class="w-4 h-4"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Navigation Links -->
+        <div class="space-y-3">
+          <h4 class="font-serif font-normal text-warm-gray-5 text-base">Navigasi Utama</h4>
+          <ul class="space-y-2 text-xs sm:text-sm text-[#fbf7eb]/60">
+            <li><a href="#beranda" class="hover:text-primary transition-colors">Beranda</a></li>
+            <li><a href="#profil" class="hover:text-primary transition-colors">Profil Sekolah</a></li>
+            <li><a href="#direktori" class="hover:text-primary transition-colors">Direktori Guru</a></li>
+            <li><a href="#berita" class="hover:text-primary transition-colors">Kabar &amp; Artikel</a></li>
+            <li><a href="#pengumuman" class="hover:text-primary transition-colors">Pengumuman</a></li>
+            <li><a href="#galeri" class="hover:text-primary transition-colors">Galeri Foto</a></li>
+            <li><a href="#kontak" class="hover:text-primary transition-colors">Kontak Kami</a></li>
+          </ul>
+        </div>
+
+        <!-- Academic Services -->
+        <div class="space-y-3">
+          <h4 class="font-serif font-normal text-warm-gray-5 text-base">Layanan Digital</h4>
+          <ul class="space-y-2 text-xs sm:text-sm text-[#fbf7eb]/60">
+            <li><a href="javascript:openPPDBInfo()" class="hover:text-primary transition-colors font-semibold text-primary">Pendaftaran PPDB 2026</a></li>
+            <li><a href="#kontak" class="hover:text-primary transition-colors">Sistem Informasi Siswa</a></li>
+            <li><a href="#kontak" class="hover:text-primary transition-colors">Perpustakaan Digital</a></li>
+            <li><a href="#kontak" class="hover:text-primary transition-colors">Konseling Bimbingan</a></li>
+            <li><a href="#kontak" class="hover:text-primary transition-colors">Jejaring Alumni</a></li>
+          </ul>
+        </div>
+
+        <!-- Official Status -->
+        <div class="space-y-3">
+          <h4 class="font-serif font-normal text-warm-gray-5 text-base">Legalitas &amp; Status</h4>
+          <p class="text-xs text-[#fbf7eb]/60 leading-relaxed font-mono">
+            NPSN: 60201452 <br>
+            NSS: 301270401001 <br>
+            Akreditasi: A (Unggul BAN-S/M) <br>
+            Dinas Dikbud Provinsi Maluku Utara
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Copyright Notice -->
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-[#fbf7eb]/50 gap-4 font-mono">
+        <p>&copy; 2026 SMA Negeri 1 Halmahera Timur. Seluruh hak cipta dilindungi undang-undang.</p>
+        <div class="flex items-center gap-6">
+          <a href="#" class="hover:text-primary transition-colors">Kebijakan Privasi</a>
+          <a href="#" class="hover:text-primary transition-colors">Syarat Penggunaan</a>
+          <a href="admin.html" class="hover:text-primary transition-colors font-bold flex items-center gap-1">
+            <i data-lucide="lock" class="w-3.5 h-3.5"></i> Portal Admin
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ================= FLOATING ACTION: BACK TO TOP ================= -->
+  <button 
+    id="back-to-top" 
+    class="fixed bottom-6 right-6 z-30 p-3.5 rounded-full bg-dark text-primary shadow-xl hover:bg-neutral-600 transition-all duration-300 opacity-0 pointer-events-none translate-y-4 border border-white/10"
+    aria-label="Kembali ke atas"
+  >
+    <i data-lucide="arrow-up" class="w-5 h-5"></i>
+  </button>
+
+  <!-- ================= GENERIC MODAL (ARTICLES & ANNOUNCEMENTS) ================= -->
+  <div id="generic-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
+    <div id="generic-modal-backdrop" class="fixed inset-0 bg-dark/70 backdrop-blur-sm transition-opacity"></div>
+    
+    <div class="relative bg-white rounded-3xl max-w-2xl w-full p-6 sm:p-8 shadow-2xl modal-enter z-10 max-h-[90vh] overflow-y-auto border border-neutral-200">
+      <div class="flex items-center justify-between pb-4 border-b border-neutral-100">
+        <span id="modal-badge" class="px-3 py-1 rounded-full text-xs font-mono font-medium bg-dark text-primary">Kategori</span>
+        <button id="generic-modal-close" class="p-1.5 rounded-full text-neutral-400 hover:text-dark hover:bg-neutral-100 transition-colors" aria-label="Tutup Jendela">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <div class="mt-4">
+        <p id="modal-meta" class="text-xs text-neutral-400 font-mono mb-2"></p>
+        <h3 id="modal-title" class="font-serif text-2xl sm:text-3xl font-normal text-dark leading-snug mb-5"></h3>
+        
+        <div class="rounded-2xl overflow-hidden mb-6 bg-warm-gray-5 max-h-72">
+          <img id="modal-img" src="" alt="Thumbnail" class="w-full h-full object-cover hidden">
+        </div>
+
+        <div id="modal-body" class="text-neutral-700 text-sm sm:text-base leading-relaxed">
+          <!-- Populated by script -->
+        </div>
+
+        <div class="mt-8 pt-4 border-t border-neutral-100 flex justify-end">
+          <button onclick="closeGenericModal()" class="px-5 py-2.5 rounded-full bg-warm-gray-15 text-dark text-sm font-semibold hover:bg-warm-gray-25 transition-colors">
+            Tutup
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= GALLERY LIGHTBOX MODAL ================= -->
+  <div id="lightbox-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4">
+    <div id="lightbox-backdrop" class="fixed inset-0 bg-[#15202d]/95 backdrop-blur-md"></div>
+    
+    <div class="relative z-10 max-w-5xl w-full flex flex-col items-center">
+      <!-- Top controls -->
+      <div class="w-full flex items-center justify-between text-white pb-3">
+        <span id="lightbox-counter" class="text-xs font-mono tracking-wider text-primary font-medium">1 / 8</span>
+        <button id="lightbox-close" class="p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors" aria-label="Tutup Lightbox">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <!-- Main Image Viewport with Nav buttons -->
+      <div class="relative w-full flex items-center justify-center">
+        <button id="lightbox-prev" class="absolute left-2 sm:-left-12 p-3 rounded-full bg-white/10 hover:bg-white/20 text-white backdrop-blur-sm transition-colors z-20" aria-label="Sebelumnya">
+          <i data-lucide="chevron-left" class="w-6 h-6"></i>
+        </button>
+
+        <div class="max-h-[75vh] max-w-full overflow-hidden rounded-2xl bg-black/50 shadow-2xl">
+          <img id="lightbox-img" src="" alt="Tampilan Galeri" class="max-h-[75vh] w-auto max-w-full object-contain mx-auto">
+        </div>
+
+        <button id="lightbox-next" class="absolute right-2 sm:-right-12 p-3 rounded-full bg-white/10 hover:bg-white/20 text-white backdrop-blur-sm transition-colors z-20" aria-label="Selanjutnya">
+          <i data-lucide="chevron-right" class="w-6 h-6"></i>
+        </button>
+      </div>
+
+      <!-- Caption bar -->
+      <div class="w-full text-center mt-4 text-white">
+        <h4 id="lightbox-title" class="font-serif text-xl font-normal text-warm-gray-5"></h4>
+        <p id="lightbox-desc" class="text-xs sm:text-sm text-[#fbf7eb]/70 mt-1 max-w-xl mx-auto"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= TOAST NOTIFICATION ================= -->
+  <div 
+    id="toast-notification" 
+    class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-[#1b2838] text-white px-6 py-3.5 rounded-full shadow-2xl flex items-center gap-3 transition-all duration-300 translate-y-24 opacity-0 pointer-events-none text-xs sm:text-sm font-medium border border-white/20"
+  >
+    <i data-lucide="check-circle" class="w-5 h-5 text-primary shrink-0"></i>
+    <span id="toast-message">Operasi berhasil diselesaikan.</span>
+  </div>
+
+  <!-- Supabase & Main JavaScript File -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="script.js"></script>
+  <script src="titan.js"></script>
+</body>
+</html>
